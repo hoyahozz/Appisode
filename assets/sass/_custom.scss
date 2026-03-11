@@ -514,6 +514,10 @@ html.dark {
 }
 
 @media screen and (max-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+
   .menu {
     height: auto;
     display: flex;
@@ -598,6 +602,16 @@ html.dark {
   }
 }
 
+@media screen and (max-width: 1023px), (hover: none), (pointer: coarse) {
+  .heading-copy-button {
+    display: none !important;
+  }
+}
+
+.wrapper.post details.toc {
+  display: none !important;
+}
+
 @media screen and (max-width: 1359px) {
   .floating-toc {
     display: none !important;
@@ -605,10 +619,6 @@ html.dark {
 }
 
 @media screen and (min-width: 1360px) {
-  .wrapper.post details.toc {
-    display: none;
-  }
-
   .floating-toc {
     position: fixed;
     top: 8.2rem;
@@ -700,6 +710,24 @@ html.dark {
 
 .wrapper.post article > .page-content {
   --markdown-flow-gap: 1.45rem;
+}
+
+.wrapper.post article > .page-content img,
+.wrapper.post article > .page-content video,
+.wrapper.post article > .page-content iframe,
+.wrapper.post article > .page-content picture,
+.wrapper.post article > .page-content object,
+.wrapper.post article > .page-content embed {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.wrapper.post article > .page-content figure,
+.wrapper.post article > .page-content .embed-responsive {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .wrapper.post article > .page-content > * {
@@ -1007,7 +1035,7 @@ code[class*="language-"] {
   background: transparent !important;
   color: inherit;
   font-family: "JetBrains Mono", "D2Coding", "Fira Code", Consolas, monospace !important;
-  font-size: 0.92rem;
+  font-size: 0.92em;
   line-height: 1.7;
   tab-size: 2;
   white-space: pre;

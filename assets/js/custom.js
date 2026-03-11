@@ -138,6 +138,8 @@
     `\\b(?:${GLOBAL_TYPE_TOKENS.map(escapeRegExp).join("|")}|[A-Z][a-z][A-Za-z0-9_]*)\\b`,
     "g",
   );
+  const DESKTOP_VIEWPORT_QUERY = "(min-width: 1024px) and (hover: hover) and (pointer: fine)";
+  const isDesktopViewport = () => window.matchMedia(DESKTOP_VIEWPORT_QUERY).matches;
 
   const toLanguageLabel = (value) => {
     const normalized = value.trim().toLowerCase();
@@ -420,6 +422,10 @@
   };
 
   const initHeadingCopyButtons = () => {
+    if (!isDesktopViewport()) {
+      return;
+    }
+
     const headings = document.querySelectorAll(
       ".page-content h1[id], .page-content h2[id], .page-content h3[id], .page-content h4[id], .page-content h5[id], .page-content h6[id]",
     );
