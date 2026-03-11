@@ -216,6 +216,6 @@ fun main() {
 
 **References**
 
-[이펙티브 코틀린](https://product.kyobobook.co.kr/detail/S000001033129)
-[코틀린 공식 문서](https://kotlinlang.org/docs/generics.html#use-site-variance-type-projections)
+[이펙티브 코틀린](https://product.kyobobook.co.kr/detail/S000001033129)</br>
+[코틀린 공식 문서](https://kotlinlang.org/docs/generics.html#use-site-variance-type-projections)</br>
 

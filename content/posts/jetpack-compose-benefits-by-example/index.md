@@ -475,7 +475,7 @@ fun Card(
 
 **References**
 
-[Use Android Jetpack to Accelerate Your App Development](https://android-developers.googleblog.com/2018/05/use-android-jetpack-to-accelerate-your.html?source=post_page-----bfb360ab05ec--------------------------------)
-[Animations in Compose](https://developer.android.com/jetpack/compose/animation?hl=ko)
-[Jetpack Compose is now 1.0: announcing Android’s modern toolkit for building native UI](https://android-developers.googleblog.com/2021/07/jetpack-compose-announcement.html)
+[Use Android Jetpack to Accelerate Your App Development](https://android-developers.googleblog.com/2018/05/use-android-jetpack-to-accelerate-your.html?source=post_page-----bfb360ab05ec--------------------------------)</br>
+[Animations in Compose](https://developer.android.com/jetpack/compose/animation?hl=ko)</br>
+[Jetpack Compose is now 1.0: announcing Android’s modern toolkit for building native UI](https://android-developers.googleblog.com/2021/07/jetpack-compose-announcement.html)</br>
 

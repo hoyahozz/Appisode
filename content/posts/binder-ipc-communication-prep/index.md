@@ -173,7 +173,7 @@ static int binder_ioctl_set_ctx_mgr(
 
 **References**
 
-- Android Code Search
-	- [framework/native/cmds/servicemanager/main.cpp](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/cmds/servicemanager/main.cpp)
-	- [common/drivers/android/binder.c](https://cs.android.com/android/kernel/superproject/+/common-android-mainline:common/drivers/android/binder.c)
-	- [frameworks/native/libs/binder/BpBinder.cpp](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/libs/binder/BpBinder.cpp?hl=ko)
+Android Code Search
+  - [framework/native/cmds/servicemanager/main.cpp](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/cmds/servicemanager/main.cpp)
+  - [common/drivers/android/binder.c](https://cs.android.com/android/kernel/superproject/+/common-android-mainline:common/drivers/android/binder.c)
+  - [frameworks/native/libs/binder/BpBinder.cpp](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/libs/binder/BpBinder.cpp?hl=ko)

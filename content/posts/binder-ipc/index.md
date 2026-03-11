@@ -256,9 +256,9 @@ locationManager.requestLocationUpdates(
 
 **References**
 
-- [Deep Dive into Android IPC/Binder Framework](https://www.youtube.com/watch?v=Jgampt1DOak&t=98s)
-- [Operation Binder: Secrets of Inter-Process Communication](https://www.youtube.com/watch?v=Fb4UoqXPEtI&t=587s)
-- [Android 프로세스의 통신 메커니즘: 바인더](https://d2.naver.com/helloworld/47656?source=post_page-----756d4fa2731a---------------------------------------)
-- [안드로이드, 어디까지 아세요 [2.2] — Bound Service, IPC](https://medium.com/mj-studio/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EC%95%84%EC%84%B8%EC%9A%94-2-2-bound-service-ipc-87237c4a38ca)
-- [Parcel](https://developer.android.com/reference/android/os/Parcel)
-- [Bound Services Overview](https://developer.android.com/develop/background-work/services/bound-services)
+[Deep Dive into Android IPC/Binder Framework](https://www.youtube.com/watch?v=Jgampt1DOak&t=98s) </br>
+[Operation Binder: Secrets of Inter-Process Communication](https://www.youtube.com/watch?v=Fb4UoqXPEtI&t=587s)</br>
+[Android 프로세스의 통신 메커니즘: 바인더](https://d2.naver.com/helloworld/47656?source=post_page-----756d4fa2731a---------------------------------------)</br>
+[안드로이드, 어디까지 아세요 [2.2] — Bound Service, IPC](https://medium.com/mj-studio/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%96%B4%EB%94%94%EA%B9%8C%EC%A7%80-%EC%95%84%EC%84%B8%EC%9A%94-2-2-bound-service-ipc-87237c4a38ca)</br>
+[Parcel](https://developer.android.com/reference/android/os/Parcel)</br>
+[Bound Services Overview](https://developer.android.com/develop/background-work/services/bound-services)</br>
