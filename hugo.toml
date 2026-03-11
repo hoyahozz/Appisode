@@ -1,0 +1,85 @@
+baseURL = "https://hoyahozz.github.io/"
+title = "Appisode"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+enableEmoji = true
+ignoreErrors = ["additional-script-loading-error"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+
+[params]
+  sitename = "Appisode"
+  defaultColor = "auto"
+  description = "A personal blog about building, shipping, and learning."
+  mainSections = ["posts"]
+  toc = true
+  tocOpen = false
+  goToTop = false
+  additionalScripts = ["js/custom.js"]
+  dateFormat = "2006-01-02"
+  rssFeedDescription = "summary"
+
+[params.author]
+  avatar = "avatar.jpg"
+  intro = "Appisode"
+  name = "hoyahozz"
+  description = "Android, Flutter Developer 😄"
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/hoyahozz"
+
+[[params.socialIcons]]
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/%EC%A0%95%ED%98%B8-%EA%B9%80-b8001623b/"
+
+[[params.socialIcons]]
+  name = "rss"
+  url = "/index.xml"
+
+[params.webmanifest]
+  name = "Appisode"
+  short_name = "Appisode"
+  start_url = "/"
+  theme_color = "#434648"
+  background_color = "#ffffff"
+  display = "standalone"
+
+[menu]
+  [[menu.main]]
+    pageRef = "/"
+    name = "Home"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    pageRef = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 20
+
+  [[menu.main]]
+    pageRef = "series"
+    name = "Series"
+    url = "/series/"
+    weight = 30
+
+[markup]
+  [markup.highlight]
+    codeFences = false
+    noClasses = false
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+
+[services]
+  [services.googleAnalytics]
+    id = ""
+  [services.disqus]
+    shortname = ""

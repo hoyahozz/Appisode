@@ -1,0 +1,35 @@
+{{- $seriesTerms := .GetTerms "series" -}}
+{{- with $seriesTerms -}}
+{{- $seriesTerm := index . 0 -}}
+{{- $seriesPages := sort $seriesTerm.Pages "Date" "asc" -}}
+{{- $seriesCount := len $seriesPages -}}
+{{- $currentIndex := -1 -}}
+{{- range $i, $p := $seriesPages -}}
+{{- if eq $p.RelPermalink $.RelPermalink -}}
+{{- $currentIndex = $i -}}
+{{- end -}}
+{{- end -}}
+{{- if ge $currentIndex 0 -}}
+{{- $hasPrev := gt $currentIndex 0 -}}
+{{- $hasNext := lt (add $currentIndex 1) $seriesCount -}}
+{{- if or $hasPrev $hasNext -}}
+<section class="series-inline-nav" aria-label="Series Navigation">
+  {{- if $hasPrev -}}
+  {{- $prevPage := index $seriesPages (sub $currentIndex 1) -}}
+  <a class="series-inline-card is-prev" href="{{ $prevPage.RelPermalink }}">
+    <span class="series-inline-label">‹ 시리즈 이전글</span>
+    <span class="series-inline-title">{{ $prevPage.Title }}</span>
+  </a>
+  {{- end -}}
+
+  {{- if $hasNext -}}
+  {{- $nextPage := index $seriesPages (add $currentIndex 1) -}}
+  <a class="series-inline-card is-next" href="{{ $nextPage.RelPermalink }}">
+    <span class="series-inline-label">시리즈 다음글 ›</span>
+    <span class="series-inline-title">{{ $nextPage.Title }}</span>
+  </a>
+  {{- end -}}
+</section>
+{{- end -}}
+{{- end -}}
+{{- end -}}

@@ -1,0 +1,54 @@
+{{- $seriesTerms := .GetTerms "series" -}}
+{{- with $seriesTerms -}}
+{{- $seriesTerm := index . 0 -}}
+{{- $seriesDisplayName := ($seriesTerm.Data.Term | humanize | title) -}}
+{{- $seriesPages := sort $seriesTerm.Pages "Date" "asc" -}}
+{{- $seriesCount := len $seriesPages -}}
+{{- $scratch := newScratch -}}
+{{- range $i, $p := $seriesPages -}}
+{{- if eq $p.RelPermalink $.RelPermalink -}}
+{{- $scratch.Set "currentIndex" $i -}}
+{{- end -}}
+{{- end -}}
+{{- $currentIndex := $scratch.Get "currentIndex" -}}
+{{- if ne $currentIndex nil -}}
+<section class="series-box" aria-label="Series">
+  <details class="series-collapse">
+    <summary class="series-summary">
+      <span class="series-summary-head">
+        <span class="series-summary-title">Series - {{ $seriesDisplayName }}</span>
+        <span class="series-summary-meta">{{ add $currentIndex 1 }}/{{ $seriesCount }}</span>
+      </span>
+      <span class="series-summary-action" data-collapsed="펼치기" data-expanded="숨기기"></span>
+    </summary>
+
+    <div class="series-body">
+      <ol class="series-list">
+        {{- range $i, $p := $seriesPages -}}
+        <li class="series-item{{ if eq $p.RelPermalink $.RelPermalink }} is-current{{ end }}">
+          {{- if eq $p.RelPermalink $.RelPermalink -}}
+          <span>{{ $p.Title }}</span>
+          {{- else -}}
+          <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+          {{- end -}}
+        </li>
+        {{- end -}}
+      </ol>
+
+      <div class="series-footer">
+        <nav class="series-nav" aria-label="Series Navigation">
+          {{- if gt $currentIndex 0 -}}
+          {{- $prevPage := index $seriesPages (sub $currentIndex 1) -}}
+          <a class="series-prev" href="{{ $prevPage.RelPermalink }}">‹ 이전글</a>
+          {{- end -}}
+          {{- if lt (add $currentIndex 1) $seriesCount -}}
+          {{- $nextPage := index $seriesPages (add $currentIndex 1) -}}
+          <a class="series-next" href="{{ $nextPage.RelPermalink }}">다음글 ›</a>
+          {{- end -}}
+        </nav>
+      </div>
+    </div>
+  </details>
+</section>
+{{- end -}}
+{{- end -}}

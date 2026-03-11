@@ -1,0 +1,36 @@
+{{ $main := slice (resources.Get "js/main.js") }}
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+{{ if .Site.Params.goToTop }}
+    {{ $main = $main | append (resources.Get "js/goToTop.js") }}
+{{ end }}
+
+{{ $custom := slice }}
+{{ range $script := .Site.Params.additionalScripts }}
+    {{ $script_res := resources.Get $script }}
+    {{ if not $script_res}}
+        {{ erroridf "additional-script-loading-error" "Failed to load script \"%s\"" $script }}
+    {{ else }}
+        {{ $custom = $custom | append (resources.Get .) }}
+    {{ end }}
+{{ end }}
+
+{{ if hugo.IsProduction }}
+    {{ $main = $main | resources.Concat "js/main.js" | resources.Minify | resources.Fingerprint }}
+    <script src="{{  $main.RelPermalink }}" integrity="{{ $main.Data.Integrity }}"></script>
+
+    {{ if gt (len $custom) 0 }}
+        {{ $custom = $custom | resources.Concat "js/custom.js" | resources.Minify | resources.Fingerprint }}
+        <script src="{{  $custom.RelPermalink }}" integrity="{{ $custom.Data.Integrity }}"></script>
+    {{ end }}
+{{ else }}
+    {{ $main = $main | resources.Concat "js/main.js" }}
+    <script async src="{{  $main.RelPermalink }}" ></script>
+
+    {{ if gt (len $custom) 0 }}
+        {{ $custom = $custom | resources.Concat "js/custom.js" }}
+        <script async src="{{  $custom.RelPermalink }}" ></script>
+    {{ end }}
+{{ end }}
