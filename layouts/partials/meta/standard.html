@@ -39,10 +39,14 @@
 
 {{/*  Define empty variable image  */}}
 {{- $image := "" -}}
+{{- $isTopLevelView := or .IsHome (eq .Kind "section") (eq .Kind "taxonomy") -}}
 
 {{/*  If image is defined in front matter, use it  */}}
 {{- if .Params.image -}}
   {{- $image = .Params.image -}}
+{{/*  For top-level views (home/section/taxonomy), use dedicated OG image if set */}}
+{{- else if and $isTopLevelView .Site.Params.rootOgImage -}}
+  {{- $image = .Site.Params.rootOgImage -}}
 {{/*  If image is not defined in front matter, use site ogimage  */}}
 {{- else if .Site.Params.ogimage -}}
   {{- $image = .Site.Params.ogimage -}}
