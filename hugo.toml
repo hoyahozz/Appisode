@@ -13,7 +13,7 @@ ignoreErrors = ["additional-script-loading-error"]
 [params]
   sitename = "Appisode"
   defaultColor = "auto"
-  description = "A personal blog about building, shipping, and learning."
+  description = "Android, Flutter Developer 😄"
   mainSections = ["posts"]
   toc = true
   tocOpen = false

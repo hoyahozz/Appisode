@@ -2,6 +2,7 @@
 title = "Binder 동작 원리 - 통신 준비"
 date = 2026-02-01T00:00:00+09:00
 draft = false
+description = "Binder 통신 전 준비 단계(Driver, Context Manager, 서비스 등록)를 전체 흐름과 함께 설명합니다."
 tags = ["Android", "IPC", "Binder"]
 series = ["Android Binder"]
 +++

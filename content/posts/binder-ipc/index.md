@@ -2,6 +2,7 @@
 title = "Binder 란?"
 date = 2025-09-05T00:00:00+09:00
 draft = false
+description = "안드로이드 Binder IPC가 왜 필요한지와 전통 IPC 대비 차이를 개념 중심으로 정리합니다."
 tags = ["Android", "IPC", "Binder"]
 series = ["Android Binder"]
 +++

@@ -2,6 +2,7 @@
 title = "Kotlin Generic in, out"
 date = 2024-01-07
 draft = false
+description = "in/out 변성과 무공변성 개념을 예제로 비교하며 안전한 제네릭 사용법을 설명합니다."
 tags = ["Kotlin", "Generic"]
 series = ["Kotlin Generic"]
 +++
@@ -297,4 +298,3 @@ fun demo(x: Comparable<Number>) {
 
 [코틀린 공식 문서](https://kotlinlang.org/docs/generics.html)</br>
 [이펙티브 코틀린: 아이템 24 - 제네릭 타입과 variance 한정자를 활용하라](https://product.kyobobook.co.kr/detail/S000001033129)</br>
-

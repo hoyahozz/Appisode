@@ -2,6 +2,7 @@
 title = "Sequence"
 date = 2024-03-03
 draft = false
+description = "대용량 데이터 처리에서 Collection 대신 Sequence가 성능에 유리한 이유를 설명합니다."
 tags = ["Kotlin"]
 +++
 
@@ -80,4 +81,3 @@ val list = (1..10).asSequence()
 
 [Sequence Explained - Kotlin Collections](https://www.youtube.com/watch?v=_F4ZzK2Iquc)</br>
 [이펙티브 코틀린 8장, 아이템 49 - 하나 이상의 처리 단계를 가진 경우에는 시퀀스를 사용하라](https://product.kyobobook.co.kr/detail/S000001033129)</br>
-

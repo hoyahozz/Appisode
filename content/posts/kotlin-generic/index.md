@@ -2,6 +2,7 @@
 title = "Kotlin Generic"
 date = 2023-12-10
 draft = false
+description = "코틀린 제네릭의 기본 개념과 타입 파라미터 사용 이유를 기초부터 정리합니다."
 tags = ["Kotlin", "Generic"]
 series = ["Kotlin Generic"]
 +++
@@ -218,4 +219,3 @@ fun main() {
 
 [이펙티브 코틀린](https://product.kyobobook.co.kr/detail/S000001033129)</br>
 [코틀린 공식 문서](https://kotlinlang.org/docs/generics.html#use-site-variance-type-projections)</br>
-

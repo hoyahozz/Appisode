@@ -2,6 +2,7 @@
 title = "코루틴 내부 구조, 쉽게 뜯어보기"
 date = 2025-07-01
 draft = false
+description = "CPS, State Machine, Labeling 관점에서 suspend 함수의 내부 동작을 쉽게 해부합니다."
 tags = ["Kotlin", "Coroutines"]
 +++
 
@@ -550,6 +551,5 @@ fun updateUser(continuation: Continuation<*>): Any {
 
 [Kotlin Coroutines - Marcin Moskala](https://product.kyobobook.co.kr/detail/S000044428865)</br>
 [KotlinConf 2017 - Deep Dive into Coroutines on JVM by Roman Elizarov](https://www.youtube.com/watch?v=YrrUCSi72E8 "KotlinConf 2017 - Deep Dive into Coroutines on JVM by Roman Elizarov")</br>
-
 
 

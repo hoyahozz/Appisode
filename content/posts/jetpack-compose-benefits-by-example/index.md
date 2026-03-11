@@ -2,6 +2,7 @@
 title = "예제로 살펴보는 Jetpack Compose 의 장점"
 date = 2024-02-18
 draft = false
+description = "실제 프로젝트 경험을 바탕으로 Jetpack Compose 도입 시 얻는 장점을 예제로 살펴봅니다."
 tags = ["Android", "Compose"]
 +++
 
@@ -478,4 +479,3 @@ fun Card(
 [Use Android Jetpack to Accelerate Your App Development](https://android-developers.googleblog.com/2018/05/use-android-jetpack-to-accelerate-your.html?source=post_page-----bfb360ab05ec--------------------------------)</br>
 [Animations in Compose](https://developer.android.com/jetpack/compose/animation?hl=ko)</br>
 [Jetpack Compose is now 1.0: announcing Android’s modern toolkit for building native UI](https://android-developers.googleblog.com/2021/07/jetpack-compose-announcement.html)</br>
-
