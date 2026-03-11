@@ -7,9 +7,13 @@
   {{- $pageTitle = "Home" -}}
 {{- end -}}
 {{- $fullTitle := printf "%s | %s" $pageTitle .Site.Title -}}
+{{- $ogTitle := $fullTitle -}}
+{{- if .IsHome -}}
+  {{- $ogTitle = .Site.Title -}}
+{{- end -}}
 
 <title itemprop="name">{{ $fullTitle }}</title>
-<meta property="og:title" content="{{ $fullTitle }}" />
+<meta property="og:title" content="{{ $ogTitle }}" />
 <meta name="twitter:title" content="{{ $fullTitle }}" />
 <meta itemprop="name" content="{{ $fullTitle }}" />
 <meta name="application-name" content="{{ $fullTitle }}" />
