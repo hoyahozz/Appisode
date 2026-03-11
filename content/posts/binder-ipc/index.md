@@ -6,8 +6,6 @@ tags = ["Android", "IPC", "Binder"]
 series = ["Android Binder"]
 +++
 
-## 개요
-
 앱을 사용하다 보면, 갤러리에서 프로필 사진을 고르거나 카메라로 사진을 찍는 경우가 있다. 사용자 입장에서는 마치 하나의 앱에서 모든 일이 자연스럽게 처리되는 것처럼 보인다. 하지만 실제로는 ‘갤러리’를 담당하는 앱과 ‘카메라’를 담당하는 앱이 **서로 다른 프로세스에서 독립적으로 실행되고 있다**.
 
 그렇다면 안드로이드는 어떻게 독립된 앱들을 하나로 이어주는걸까? 이것을 가능하게 해주는 것이 바로 안드로이드의 핵심 `IPC` 메커니즘인 **`Binder`** 이다. 이번 포스팅에서는 `Binder IPC` 가 어떤 역할을 하고, 왜 필요한지 그 개념을 차근차근 살펴본다.
@@ -246,16 +244,17 @@ locationManager.requestLocationUpdates(
 
 이는 `Binder` 통신을 위해 특수하게 제작된 **`Parcel`** 이 지원하는 타입과 동일하다. `Parcel` 을 활용하여 `Binder` 통신을 진행할 경우, 메모리 효율성과 통신 속도의 향상을 기대할 수 있다.
 
-## 마치며
+---
+
 지금까지 `Binder` 가 탄생한 이유와 핵심 특징들을 살펴보았다. 공부를 하면서 느낀건 `Binder` 가 여태까지 당연하게 사용했던 모든 기능에 관여하고 있었다는 점이었다. 
 
 사용자로서는 카메라에 접근하여 사진을 찍었던 것, 개발자로서는 `Intent` 를 통해 데이터를 전달했던 것, 모두 `Binder` 가 있었기에 가능한 동작들이었다. 어떤 문서에서는 **"`Binder` 가 곧 안드로이드다."** 라는 표현을 썼었는데, 공부를 해보니 이 표현에 십분 공감하게 됐다.
 
-다음 포스팅에서는 실제 통신 발생 시에 `Binder` 가 어떻게 동작하는지 깊이 있게 탐구해보도록 한다.
+[다음 포스팅](/posts/binder-ipc-communication-prep/)에서는 실제 통신 발생 시에 `Binder` 가 어떻게 동작하는지 깊이 있게 탐구해보도록 한다.
 
 ---
 
-### References
+**References**
 
 - [Deep Dive into Android IPC/Binder Framework](https://www.youtube.com/watch?v=Jgampt1DOak&t=98s)
 - [Operation Binder: Secrets of Inter-Process Communication](https://www.youtube.com/watch?v=Fb4UoqXPEtI&t=587s)

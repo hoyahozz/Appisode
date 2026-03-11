@@ -165,15 +165,14 @@ static int binder_ioctl_set_ctx_mgr(
 
 ---
 
-## 마치며
-
 이번 포스팅에서는 `Binder` 통신이 본격적으로 시작되기 전, **준비 과정**을 살펴봤다.
 
 다음 포스팅에서는 **클라이언트 프로세스가  `getService` 로 서버 프로세스를 찾고, 실제 데이터를 주고받는 과정**을 다이어그램과 함께 자세히 살펴본다.
 
 ---
 
-### References
+**References**
+
 - Android Code Search
 	- [framework/native/cmds/servicemanager/main.cpp](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/native/cmds/servicemanager/main.cpp)
 	- [common/drivers/android/binder.c](https://cs.android.com/android/kernel/superproject/+/common-android-mainline:common/drivers/android/binder.c)
