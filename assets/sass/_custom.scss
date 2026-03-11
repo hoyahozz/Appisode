@@ -88,6 +88,10 @@ html {
   scrollbar-gutter: stable both-edges;
 }
 
+body {
+  font-size: var(--runtime-body-font-size, 16px);
+}
+
 *:focus,
 *:focus-visible {
   outline: none !important;
@@ -514,10 +518,6 @@ html.dark {
 }
 
 @media screen and (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-
   .menu {
     height: auto;
     display: flex;

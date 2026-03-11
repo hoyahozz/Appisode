@@ -2,3 +2,59 @@
   Theme-safe head extension point.
   Put custom meta tags, analytics scripts, or verification tags here.
 -->
+<style>
+  html.env-sizing-pending body {
+    visibility: hidden;
+  }
+</style>
+<script>
+  (() => {
+    const root = document.documentElement;
+    const mobileQuery = "(max-width: 768px)";
+    const setRuntimeFontSize = (matchesMobile) => {
+      root.style.setProperty("--runtime-body-font-size", matchesMobile ? "14px" : "16px");
+    };
+
+    root.classList.add("env-sizing-pending");
+
+    const mediaQueryList = window.matchMedia(mobileQuery);
+    setRuntimeFontSize(mediaQueryList.matches);
+
+    const handleMediaChange = (event) => {
+      setRuntimeFontSize(event.matches);
+    };
+
+    if (typeof mediaQueryList.addEventListener === "function") {
+      mediaQueryList.addEventListener("change", handleMediaChange);
+    } else if (typeof mediaQueryList.addListener === "function") {
+      mediaQueryList.addListener(handleMediaChange);
+    }
+
+    const reveal = () => {
+      root.classList.remove("env-sizing-pending");
+    };
+
+    const revealOnNextFrame = () => {
+      if (typeof window.requestAnimationFrame === "function") {
+        window.requestAnimationFrame(reveal);
+      } else {
+        window.setTimeout(reveal, 0);
+      }
+    };
+
+    if (
+      document.fonts &&
+      document.fonts.ready &&
+      typeof document.fonts.ready.then === "function"
+    ) {
+      Promise.race([
+        document.fonts.ready,
+        new Promise((resolve) => window.setTimeout(resolve, 1200)),
+      ])
+        .then(revealOnNextFrame)
+        .catch(revealOnNextFrame);
+    } else {
+      revealOnNextFrame();
+    }
+  })();
+</script>
