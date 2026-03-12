@@ -1,7 +1,19 @@
 {{ $main := slice (resources.Get "js/main.js") }}
-
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+{{ $prism := slice
+    (resources.Get "vendor/prism/prism-core.min.js")
+    (resources.Get "vendor/prism/prism-markup.min.js")
+    (resources.Get "vendor/prism/prism-clike.min.js")
+    (resources.Get "vendor/prism/prism-bash.min.js")
+    (resources.Get "vendor/prism/prism-shell-session.min.js")
+    (resources.Get "vendor/prism/prism-c.min.js")
+    (resources.Get "vendor/prism/prism-cpp.min.js")
+    (resources.Get "vendor/prism/prism-dart.min.js")
+    (resources.Get "vendor/prism/prism-go.min.js")
+    (resources.Get "vendor/prism/prism-java.min.js")
+    (resources.Get "vendor/prism/prism-kotlin.min.js")
+    (resources.Get "vendor/prism/prism-rust.min.js")
+    (resources.Get "vendor/prism/prism-swift.min.js")
+}}
 
 {{ if .Site.Params.goToTop }}
     {{ $main = $main | append (resources.Get "js/goToTop.js") }}
@@ -18,6 +30,9 @@
 {{ end }}
 
 {{ if hugo.IsProduction }}
+    {{ $prism = $prism | resources.Concat "js/prism-vendor.js" | resources.Minify | resources.Fingerprint }}
+    <script src="{{  $prism.RelPermalink }}" integrity="{{ $prism.Data.Integrity }}"></script>
+
     {{ $main = $main | resources.Concat "js/main.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{  $main.RelPermalink }}" integrity="{{ $main.Data.Integrity }}"></script>
 
@@ -26,6 +41,9 @@
         <script src="{{  $custom.RelPermalink }}" integrity="{{ $custom.Data.Integrity }}"></script>
     {{ end }}
 {{ else }}
+    {{ $prism = $prism | resources.Concat "js/prism-vendor.js" }}
+    <script src="{{  $prism.RelPermalink }}"></script>
+
     {{ $main = $main | resources.Concat "js/main.js" }}
     <script async src="{{  $main.RelPermalink }}" ></script>
 

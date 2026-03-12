@@ -659,11 +659,6 @@
       codeElement.classList.add(normalizedClass);
     });
 
-    const autoloader = window.Prism.plugins && window.Prism.plugins.autoloader;
-    if (autoloader) {
-      autoloader.languages_path = "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/";
-    }
-
     if (window.Prism.hooks && typeof window.Prism.hooks.add === "function") {
       window.Prism.hooks.add("complete", (env) => {
         if (!env || !env.element || env.element.tagName !== "CODE") {
