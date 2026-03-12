@@ -743,6 +743,22 @@ html.dark {
   margin: 2rem 0 !important;
 }
 
+.footer_copyright .footer_author_link {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.16s ease;
+}
+
+.footer_copyright {
+  opacity: 1;
+}
+
+.footer_copyright .footer_author_link:hover,
+.footer_copyright .footer_author_link:focus,
+.footer_copyright .footer_author_link:focus-visible {
+  color: var(--accent-primary-hover);
+}
+
 .heading-copy-target {
   position: relative;
 }
