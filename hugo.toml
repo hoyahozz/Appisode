@@ -24,7 +24,7 @@ ignoreErrors = ["additional-script-loading-error"]
   rssFeedDescription = "summary"
 
 [params.author]
-  avatar = "avatar.jpg"
+  avatar = "icons/favicon.svg"
   intro = "Appisode"
   name = "hoyahozz"
   description = "Android, Flutter Developer 😄"
