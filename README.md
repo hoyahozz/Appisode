@@ -1,5 +1,3 @@
-![Appisode](docs/images/banner.png "Appisode")
+# Appisode
 
-현재 운영 중인 블로그입니다. 😊
-
-- `Hugo`, `Cloudflare Pages`
+`Hugo`, `Cloudflare Pages`

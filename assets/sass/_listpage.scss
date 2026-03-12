@@ -11,6 +11,7 @@
 }
 
 .post-item-right {
-  margin-left: auto;
+  margin-left: 0;
   margin-right: 0;
+  flex-shrink: 0;
 }

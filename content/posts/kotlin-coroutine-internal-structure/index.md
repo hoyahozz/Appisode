@@ -203,7 +203,7 @@ class UpdateUserContinuation(): Continuation<Unit> {
 
 `Labeling` 의 역할은 아주 간단하다.
 
-```
+```kotlin
 suspend fun updateUser() {
     // label 0
     val token = fetchToken()

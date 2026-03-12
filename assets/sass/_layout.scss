@@ -46,9 +46,10 @@
   display: flex;
   padding-top: 5px;
   padding-bottom: 6px;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
   align-items: center;
+  column-gap: 20px;
 
   &:not(:first-child) {
     border-top: 1px solid $light;
@@ -70,10 +71,8 @@
     font-size: $base-font-size;
     font-weight: normal;
     letter-spacing: 0.1px;
-
-    @include media-query($on-mobile) {
-      max-width: 15rem;
-    }
+    flex: 1 1 auto;
+    min-width: 0;
 
     a {
       color: $text-base-color;
@@ -84,6 +83,11 @@
         color: $black;
       }
     }
+  }
+
+  .post-item-meta {
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 }
 
