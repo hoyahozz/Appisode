@@ -62,7 +62,7 @@ suspend fun fetchIsValidUser(token: Token, user: User): Boolean { . . . }
 
 ---
 
-## **CPS (Continuation-Passing Style)**
+## CPS (Continuation-Passing Style)
 
 `CPS` 라는 이름만 들어보았을 때는 복잡해보이지만, **사실은 우리에게 익숙한 `Callback` 과 매우 유사한 개념**이다.
 
@@ -199,7 +199,7 @@ class UpdateUserContinuation(): Continuation<Unit> {
 
 ---
 
-## **Labeling**
+## Labeling
 
 `Labeling` 의 역할은 아주 간단하다.
 
@@ -277,7 +277,7 @@ class UpdateUserContinuation(): Continuation<Unit> {
 
 ---
 
-## **State Machine**
+## State Machine
 
 이름 그대로, **함수 호출에 필요한 상태를 저장하고 관리하는 역할**을 한다.
 
@@ -357,7 +357,7 @@ fun updateUser(continuation: Continuation<*>): Any {
 
 ---
 
-## **직접 구현해보기**
+## 직접 구현해보기
 
 이제 코루틴이 내부에서 어떤 개념들을 바탕으로 동작하는지 이해했으니, 직접 구현해보며 개념을 다시 복습해보자.
 
@@ -551,5 +551,4 @@ fun updateUser(continuation: Continuation<*>): Any {
 
 [Kotlin Coroutines - Marcin Moskala](https://product.kyobobook.co.kr/detail/S000044428865)</br>
 [KotlinConf 2017 - Deep Dive into Coroutines on JVM by Roman Elizarov](https://www.youtube.com/watch?v=YrrUCSi72E8 "KotlinConf 2017 - Deep Dive into Coroutines on JVM by Roman Elizarov")</br>
-
 
