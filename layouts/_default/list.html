@@ -4,9 +4,34 @@
         <h1 class="header-title center">{{ .Title }}</h1>
     </header>
     <main class="page-content" aria-label="Content">
+        {{ $ISODate := "2006-01-02T15:04:05Z0700" }}
+        {{ $configDateFormat := .Site.Params.dateFormat | default "2 Jan 2006" }}
         {{ if eq .Type "series" }}
-            {{ range (sort .Pages "Date" "asc") }}
-                {{ partial "postCard" . }}
+            {{ if eq .Kind "taxonomy" }}
+                {{ range (sort .Pages "Title" "asc") }}
+                    <article class="post-item">
+                        <h4 class="post-item-title">
+                            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                        </h4>
+                        {{ if gt (len .Pages) 0 }}
+                        {{ $latestPost := index (sort .Pages "Date" "desc") 0 }}
+                        <time class="post-item-meta" datetime="{{ dateFormat $ISODate $latestPost.Date }}">
+                            {{ time.Format $configDateFormat $latestPost.Date }}
+                        </time>
+                        {{ end }}
+                    </article>
+                {{ end }}
+            {{ else }}
+                {{ range (sort .Pages "Date" "asc") }}
+                    <article class="post-item">
+                        <h4 class="post-item-title">
+                            <a href="{{ .RelPermalink }}?nav=series">{{ .Title }}</a>
+                        </h4>
+                        <time class="post-item-meta" datetime="{{ dateFormat $ISODate .Date }}">
+                            {{ time.Format $configDateFormat .Date }}
+                        </time>
+                    </article>
+                {{ end }}
             {{ end }}
         {{ else }}
             {{ range .Pages.GroupByDate "2006" }}

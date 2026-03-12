@@ -1,0 +1,71 @@
+{{- $postsPages := where site.RegularPages "Type" "posts" -}}
+{{- $postScratch := newScratch -}}
+{{- $olderPosts := where $postsPages "Date" "lt" $.Date -}}
+{{- $newerPosts := where $postsPages "Date" "gt" $.Date -}}
+{{- if gt (len $olderPosts) 0 -}}
+{{- $postScratch.Set "prev" (index (sort $olderPosts "Date" "desc") 0) -}}
+{{- end -}}
+{{- if gt (len $newerPosts) 0 -}}
+{{- $postScratch.Set "next" (index (sort $newerPosts "Date" "asc") 0) -}}
+{{- end -}}
+{{- $postsPrev := $postScratch.Get "prev" -}}
+{{- $postsNext := $postScratch.Get "next" -}}
+{{- $hasPostsNav := or (ne $postsPrev nil) (ne $postsNext nil) -}}
+
+{{- $seriesScratch := newScratch -}}
+{{- $seriesTerms := .GetTerms "series" -}}
+{{- with $seriesTerms -}}
+{{- $seriesTerm := index . 0 -}}
+{{- $seriesPages := $seriesTerm.Pages -}}
+{{- $olderSeriesPosts := where $seriesPages "Date" "lt" $.Date -}}
+{{- $newerSeriesPosts := where $seriesPages "Date" "gt" $.Date -}}
+{{- if gt (len $olderSeriesPosts) 0 -}}
+{{- $seriesScratch.Set "prev" (index (sort $olderSeriesPosts "Date" "desc") 0) -}}
+{{- end -}}
+{{- if gt (len $newerSeriesPosts) 0 -}}
+{{- $seriesScratch.Set "next" (index (sort $newerSeriesPosts "Date" "asc") 0) -}}
+{{- end -}}
+{{- end -}}
+{{- $seriesPrev := $seriesScratch.Get "prev" -}}
+{{- $seriesNext := $seriesScratch.Get "next" -}}
+{{- $hasSeriesNav := or (ne $seriesPrev nil) (ne $seriesNext nil) -}}
+
+{{- if or $hasPostsNav $hasSeriesNav -}}
+<div data-post-nav-switcher>
+  {{- if $hasPostsNav -}}
+  <nav class="post-nav" data-post-nav-scope="posts" aria-label="Post Navigation">
+    {{- with $postsPrev -}}
+    <a class="post-nav-item is-prev" href="{{ .RelPermalink }}">
+      <div class="nav-arrow">← 이전 포스트</div>
+      <span class="post-title">{{ .Title }}</span>
+    </a>
+    {{- end -}}
+
+    {{- with $postsNext -}}
+    <a class="post-nav-item is-next" href="{{ .RelPermalink }}">
+      <div class="nav-arrow">다음 포스트 →</div>
+      <span class="post-title">{{ .Title }}</span>
+    </a>
+    {{- end -}}
+  </nav>
+  {{- end -}}
+
+  {{- if $hasSeriesNav -}}
+  <nav class="post-nav" data-post-nav-scope="series" aria-label="Series Navigation"{{ if $hasPostsNav }} hidden{{ end }}>
+    {{- with $seriesPrev -}}
+    <a class="post-nav-item is-prev" href="{{ .RelPermalink }}?nav=series">
+      <div class="nav-arrow">← 이전 시리즈 포스트</div>
+      <span class="post-title">{{ .Title }}</span>
+    </a>
+    {{- end -}}
+
+    {{- with $seriesNext -}}
+    <a class="post-nav-item is-next" href="{{ .RelPermalink }}?nav=series">
+      <div class="nav-arrow">다음 시리즈 포스트 →</div>
+      <span class="post-title">{{ .Title }}</span>
+    </a>
+    {{- end -}}
+  </nav>
+  {{- end -}}
+</div>
+{{- end -}}

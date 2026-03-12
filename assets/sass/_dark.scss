@@ -197,11 +197,7 @@
 
   // Post Navigation
   .post-nav {
-    border-color: $dark-light;
-
     .post-nav-item {
-      font-weight: $bold-weight;
-
       .post-title {
         color: $dark-white;
         opacity: 0.9;
@@ -216,12 +212,6 @@
 
       .nav-arrow {
         color: $dark-gray;
-      }
-    }
-
-    @include media-query($on-mobile) {
-      .post-nav-item:nth-child(even) {
-        border-color: $dark-light;
       }
     }
   }

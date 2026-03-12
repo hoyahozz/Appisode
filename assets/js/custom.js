@@ -592,6 +592,26 @@
     syncTocState();
   };
 
+  const initContextualPostNavigation = () => {
+    const switcher = document.querySelector("[data-post-nav-switcher]");
+    if (!(switcher instanceof HTMLElement)) {
+      return;
+    }
+
+    const postsNav = switcher.querySelector("[data-post-nav-scope='posts']");
+    const seriesNav = switcher.querySelector("[data-post-nav-scope='series']");
+    if (!(postsNav instanceof HTMLElement) || !(seriesNav instanceof HTMLElement)) {
+      return;
+    }
+
+    const currentUrl = new URL(window.location.href);
+    const explicitMode = currentUrl.searchParams.get("nav");
+    const useSeriesNavigation = explicitMode === "series";
+
+    postsNav.hidden = useSeriesNavigation;
+    seriesNav.hidden = !useSeriesNavigation;
+  };
+
   const initStickyHeaderState = () => {
     const navbar = document.querySelector(".navbar");
     if (!(navbar instanceof HTMLElement)) {
@@ -719,6 +739,7 @@
     initCodeBlocks();
     initHeadingCopyButtons();
     initFloatingToc();
+    initContextualPostNavigation();
   };
 
   if (document.readyState === "loading") {

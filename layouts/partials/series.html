@@ -29,24 +29,12 @@
           {{- if eq $p.RelPermalink $.RelPermalink -}}
           <span>{{ $p.Title }}</span>
           {{- else -}}
-          <a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+          <a href="{{ $p.RelPermalink }}?nav=series">{{ $p.Title }}</a>
           {{- end -}}
         </li>
         {{- end -}}
       </ol>
 
-      <div class="series-footer">
-        <nav class="series-nav" aria-label="Series Navigation">
-          {{- if gt $currentIndex 0 -}}
-          {{- $prevPage := index $seriesPages (sub $currentIndex 1) -}}
-          <a class="series-prev" href="{{ $prevPage.RelPermalink }}">‹ 이전글</a>
-          {{- end -}}
-          {{- if lt (add $currentIndex 1) $seriesCount -}}
-          {{- $nextPage := index $seriesPages (add $currentIndex 1) -}}
-          <a class="series-next" href="{{ $nextPage.RelPermalink }}">다음글 ›</a>
-          {{- end -}}
-        </nav>
-      </div>
     </div>
   </details>
 </section>

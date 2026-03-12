@@ -17,6 +17,7 @@
             <div class="page-content">
                 {{ .Content }}
             </div>
+            {{ partial "postNavigation.html" . }}
         </article>
         {{- partial "comments.html" . -}}
     </main>
