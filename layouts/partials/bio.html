@@ -4,9 +4,12 @@
 <div class="author">
     {{ with $image }}
     {{ if eq .MediaType.SubType "svg" }}
-    <svg width="25em" height="25em" xmlns="http://www.w3.org/2000/svg">
-        <image width="25em" height="25em" href="{{ $image.RelPermalink }}" />
-    </svg>
+    <img
+        class="author-avatar"
+        src="{{ $image.RelPermalink }}"
+        alt="{{ $avatar_img_alt }}"
+        width="70"
+        height="70" />
     {{ else }}
     {{ $image1x := $image.Fill "70x70 center webp" }}
     {{ $image2x := $image.Fill "140x140 center webp" }}
