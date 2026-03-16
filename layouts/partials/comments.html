@@ -1,4 +1,78 @@
-{{- if .Site.Config.Services.Disqus.Shortname -}}
+{{- $giscus := .Site.Params.giscus -}}
+{{- $hasGiscusConfig := and $giscus.enabled $giscus.repo $giscus.repoId $giscus.category $giscus.categoryId -}}
+
+{{- if $hasGiscusConfig -}}
+<section class="post-comments" aria-label="Comments">
+    <div
+        id="giscus-container"
+        class="giscus-comments"
+        data-repo="{{ $giscus.repo }}"
+        data-repo-id="{{ $giscus.repoId }}"
+        data-category="{{ $giscus.category }}"
+        data-category-id="{{ $giscus.categoryId }}"
+        data-mapping="{{ $giscus.mapping | default "pathname" }}"
+        data-strict="{{ $giscus.strict | default "0" }}"
+        data-reactions-enabled="{{ $giscus.reactionsEnabled | default "1" }}"
+        data-emit-metadata="{{ $giscus.emitMetadata | default "0" }}"
+        data-input-position="{{ $giscus.inputPosition | default "bottom" }}"
+        data-lang="{{ $giscus.lang | default "en" }}"
+        data-light-theme="{{ $giscus.lightTheme | default "light" }}"
+        data-dark-theme="{{ $giscus.darkTheme | default "dark" }}"
+    ></div>
+    <script>
+        (() => {
+            const container = document.getElementById("giscus-container");
+            if (!container) {
+                return;
+            }
+
+            const lightTheme = container.dataset.lightTheme || "light";
+            const darkTheme = container.dataset.darkTheme || "dark";
+
+            const resolveTheme = () =>
+                document.documentElement.classList.contains("dark")
+                    ? darkTheme
+                    : lightTheme;
+
+            const script = document.createElement("script");
+            script.src = "https://giscus.app/client.js";
+            script.async = true;
+            script.crossOrigin = "anonymous";
+            script.setAttribute("data-repo", container.dataset.repo || "");
+            script.setAttribute("data-repo-id", container.dataset.repoId || "");
+            script.setAttribute("data-category", container.dataset.category || "");
+            script.setAttribute("data-category-id", container.dataset.categoryId || "");
+            script.setAttribute("data-mapping", container.dataset.mapping || "pathname");
+            script.setAttribute("data-strict", container.dataset.strict || "0");
+            script.setAttribute("data-reactions-enabled", container.dataset.reactionsEnabled || "1");
+            script.setAttribute("data-emit-metadata", container.dataset.emitMetadata || "0");
+            script.setAttribute("data-input-position", container.dataset.inputPosition || "bottom");
+            script.setAttribute("data-lang", container.dataset.lang || "en");
+            script.setAttribute("data-theme", resolveTheme());
+            script.setAttribute("data-loading", "lazy");
+            container.appendChild(script);
+
+            const updateTheme = () => {
+                const iframe = document.querySelector("iframe.giscus-frame");
+                if (!iframe || !iframe.contentWindow) {
+                    return;
+                }
+
+                iframe.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme: resolveTheme() } } },
+                    "https://giscus.app"
+                );
+            };
+
+            const observer = new MutationObserver(() => updateTheme());
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ["class"],
+            });
+        })();
+    </script>
+</section>
+{{- else if .Site.Config.Services.Disqus.Shortname -}}
 <hr style="margin-top: 40px; margin-bottom: 40px;" />
 {{ template "_internal/disqus.html" . }}
 {{- end -}}

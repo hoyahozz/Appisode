@@ -23,6 +23,23 @@ ignoreErrors = ["additional-script-loading-error"]
   dateFormat = "2006-01-02"
   rssFeedDescription = "summary"
 
+# giscus setup: https://giscus.app/
+# Fill repo/repoId/category/categoryId, then set enabled = true.
+[params.giscus]
+  enabled = true
+  repo = "hoyahozz/Appisode"
+  repoId = "R_kgDORj3mBQ"
+  category = "Announcements"
+  categoryId = "DIC_kwDORj3mBc4C4gSD"
+  mapping = "pathname"
+  strict = "0"
+  reactionsEnabled = "1"
+  emitMetadata = "0"
+  inputPosition = "bottom"
+  lang = "ko"
+  lightTheme = "light"
+  darkTheme = "dark"
+
 [params.author]
   avatar = "icons/favicon.svg"
   intro = "Appisode"

@@ -258,6 +258,22 @@
   }
 }
 
+.post-comments {
+  margin-top: 28px;
+}
+
+.giscus-comments {
+  min-height: 140px;
+}
+
+.wrapper.post + .footer {
+  margin-top: 3.5em;
+
+  @include media-query($on-mobile) {
+    margin-top: 2.2em;
+  }
+}
+
 .post-updated-at {
   font-family: "Ubuntu mono", "monospace";
 }
