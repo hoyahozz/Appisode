@@ -15,7 +15,7 @@
   --accent-soft-bg: rgba(47, 125, 184, 0.14);
   --accent-soft-border: rgba(47, 125, 184, 0.36);
   --markdown-rule-color: #cfd7e0;
-  --font-family-inter: "D2Coding", "D2Coding ligature", "D2CodingLigature", "D2 coding", monospace;
+  --font-family-inter: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
   --header-bg: rgba(255, 255, 255, 0.86);
   --header-border: rgba(208, 215, 222, 0.8);
   --header-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
@@ -80,6 +80,34 @@ pre,
 kbd,
 samp {
   font-family: var(--font-family-inter) !important;
+}
+
+pre,
+pre code,
+.highlight pre,
+.highlight code,
+.highlight td code {
+  font-family: "D2Coding", "D2Coding ligature", "D2CodingLigature", "D2 coding", monospace !important;
+}
+
+p > code,
+li > code,
+td > code,
+blockquote > code,
+h1 > code,
+h2 > code,
+h3 > code,
+h4 > code,
+h5 > code,
+h6 > code {
+  font-family: "D2Coding", "D2Coding ligature", "D2CodingLigature", "D2 coding", monospace !important;
+}
+
+.navbar .menu-link,
+.navbar .lang-list,
+.author-name,
+.author-bio {
+  font-family: "D2Coding", "D2Coding ligature", "D2CodingLigature", "D2 coding", monospace !important;
 }
 
 html {
@@ -1003,6 +1031,35 @@ code[class*="language-"] {
   font-family: var(--font-family-inter) !important;
   font-size: 0.9em;
   font-weight: 600;
+}
+
+/* 볼드 안의 인라인 코드 - 강조 스타일 적용 */
+strong code,
+b code {
+  color: #0d4a75 !important;
+  font-size: calc(0.9em + 1px) !important;
+}
+
+html.dark strong code,
+html.dark b code {
+  color: #7ec4e8 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not(.light) strong code,
+  html:not(.light) b code {
+    color: #7ec4e8 !important;
+  }
+}
+
+/* 링크 안의 인라인 코드 - 링크 컬러 적용 */
+a code {
+  color: var(--accent-primary) !important;
+}
+
+a:hover code,
+a:focus code {
+  color: var(--accent-primary-hover) !important;
 }
 
 .chroma .ln,

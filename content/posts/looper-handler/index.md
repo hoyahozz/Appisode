@@ -22,6 +22,9 @@ series = ["Android Threading"]
 
 이런 이유로 안드로이드는 단 하나의 **메인 스레드가 UI와 관련된 모든 요소들을 통제하도록 규정**했다. `View` 를 적합한 곳에 배치시키고 렌더링하는 것은 물론, 안드로이드 컴포넌트의 생명주기 메소드 호출, 클릭 이벤트 처리 등 굉장히 다양한 작업을 수행한다. **UI를 변경할 수 있는 유일한 스레드**이기 때문에, 안드로이드 진영에서는 메인 스레드에 대해 **UI 스레드**라는 표현을 자주 사용한다.
 
+</br>
+</br>
+
 하지만 당연하게도(?) 애플리케이션의 역할이 UI 렌더링에만 국한되지는 않는다. API를 호출하여 실제 데이터를 받아와야 하고, 무거운 연산을 통해 화면 출력에 필요한 값을 추출해낼 수도 있어야 한다. 문제는 이 작업들을 메인 스레드에서 수행할 경우, **UI 업데이트 작업이 뒤로 밀리면서 사용자에게는 화면이 멈춘 듯한 인상을 줄 수 있다는 점**이다.
 
 이는 사용자 경험에 매우 치명적이므로, 안드로이드는 메인 스레드가 일정 시간동안 블로킹된 것을 포착한 경우 즉시 [ANR](https://developer.android.com/topic/performance/vitals/anr?hl=ko)을 일으켜 사용자에게 애플리케이션을 강제 종료할 것이냐고 묻는다.
@@ -354,7 +357,7 @@ class MyBackgroundThread extends Thread {
 
 ---
 
-이번 포스팅에서는 안드로이드 동시성 처리의 근간이자 조상인 `Looper`, `MessageQueue`, `Handler` 에 대해 알아보았다. 다음 포스팅에서는 이를 바탕으로, 현재 실무에서 주로 다루는 `Coroutines` 이 이 요소들을 내부적으로 어떻게 활용하고 있는지 구체적으로 살펴본다.
+이번 포스팅에서는 안드로이드 동시성 처리의 조상님인 `Looper`, `MessageQueue`, `Handler` 에 대해 알아보았다. 다음 포스팅에서는 이를 바탕으로, 현재 실무에서 주로 다루는 `Coroutines` 이 이 요소들을 내부적으로 어떻게 활용하고 있는지 구체적으로 살펴본다.
 
 ---
 
@@ -364,7 +367,7 @@ class MyBackgroundThread extends Thread {
 [Handler](https://developer.android.com/reference/android/os/Handler)</br>
 [안드로이드 프로그래밍 Next Step - 2장, 메인 스레드와 Handler](https://www.yes24.com/product/goods/41085242)</br>
 - Android Code Search
-	- [ActivityThread](https://cs.android.com/android/platform/superproject/+/android-latest-release:frameworks/base/core/java/android/app/ActivityThread.java;l=320?q=ActivityThread&sq=&hl=ko)</br>
-	- [Looper](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/os/Looper.java;l=1?q=Looper.java&sq=&hl=ko)</br>
-	- [MessageQueue](https://cs.android.com/android/platform/superproject/+/android-latest-release:frameworks/base/core/java/android/os/DeliQueue/MessageQueue.java;l=1?q=MessageQueue.java&hl=ko)</br>
-	- [Message](https://cs.android.com/android/platform/superproject/+/android-latest-release:frameworks/base/core/java/android/os/Message.java;l=212?q=sPoolSync&hl=ko)</br>
+	- [ActivityThread](https://cs.android.com/android/platform/superproject/+/android-latest-release:frameworks/base/core/java/android/app/ActivityThread.java;l=320?q=ActivityThread&sq=&hl=ko)
+	- [Looper](https://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/os/Looper.java;l=1?q=Looper.java&sq=&hl=ko)
+	- [MessageQueue](https://cs.android.com/android/platform/superproject/+/android-latest-release:frameworks/base/core/java/android/os/DeliQueue/MessageQueue.java;l=1?q=MessageQueue.java&hl=ko)
+	- [Message](https://cs.android.com/android/platform/superproject/+/android-latest-release:frameworks/base/core/java/android/os/Message.java;l=212?q=sPoolSync&hl=ko)
